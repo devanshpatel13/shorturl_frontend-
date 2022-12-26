@@ -1,0 +1,22 @@
+
+
+<body style="background-image: url('assets/image/Plutus-logo.jpg'); background-size: cover; ">
+  <div class="container">
+    <form action="" class="form-group d-flex justify-content-center align-items-center">
+      <h3 class="m-3">longurl</h3> <input type="text" name="longurl" class="form-control" [(ngModel)]="url.longurl">
+      <button class="btn btn-primary mx-4" (click)="createShorturl()">submit</button>
+    </form>
+    <div class="container">
+      <form action="" class="form-group d-flex justify-content-center align-items-center">
+        <div class="form-group mx-sm-3 mb-2" *ngIf="shorturl">
+          <h3 class="m-3 justify-content-center">shorturl</h3>
+          <h6 class="form-control">{{ response.shorturl }}</h6>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</body>
+<div class="container" bg-dark style="background-color: black;">
+  <h2>Yeh Broooooo !</h2>
+</div>
