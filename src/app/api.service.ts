@@ -13,7 +13,7 @@ export class ApiService {
 
   postlongurl(data : any): Observable<any>{
     const body = {longurl : data.longurl , shorturl : data.shorturl}
-    return this.http.post(this.baseurl + 'storeurl',body, {headers :this.httpHeaders});
+    return this.http.post(this.baseurl + 'store-url',body, {headers :this.httpHeaders});
   }
   
 }

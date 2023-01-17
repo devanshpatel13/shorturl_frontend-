@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import {Clipboard} from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-createshorturl',
@@ -14,7 +15,7 @@ export class CreateshorturlComponent  implements OnInit{
   response :any;
   shorturl:boolean = false
 
-  constructor(private api:ApiService){
+  constructor(private api:ApiService, private clipboard: Clipboard){
     this.url = {id : -1, longurl : '', shorturl : '' };
 
   }
@@ -24,16 +25,22 @@ export class CreateshorturlComponent  implements OnInit{
           this.data.push(Response);
           this.response = Response
           this.shorturl = true
+          
         },
         err => {
-          alert(`Invalid url format
-OR
-url is already used`)
+          alert(`Invalid url format`)
         }
     )
 
   };
-
+  copyshorturl = (response :any)=>{
+    
+    this.clipboard.copy(response.shorturl)
+    // console.log(response.shorturl, "this is response .....")
+  };
+  reloadpage = () => {
+    window.location.reload();
+  };
   ngOnInit(): void {
 
   }
