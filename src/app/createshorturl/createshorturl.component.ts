@@ -29,6 +29,7 @@ export class CreateshorturlComponent  implements OnInit{
         },
         err => {
           alert(`Invalid url format`)
+          window.location.reload();
         }
     )
 
@@ -36,7 +37,7 @@ export class CreateshorturlComponent  implements OnInit{
   copyshorturl = (response :any)=>{
     
     this.clipboard.copy(response.shorturl)
-    // console.log(response.shorturl, "this is response .....")
+    
   };
   reloadpage = () => {
     window.location.reload();

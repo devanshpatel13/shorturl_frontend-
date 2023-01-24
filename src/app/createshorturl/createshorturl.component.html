@@ -61,6 +61,10 @@
         padding: 15px 0;
         box-shadow: 0px 2px 20px rgb(1 41 112 / 10%);
       }
+      .btn:focus {
+        outline: none;
+        box-shadow: none;
+      }
       .main-content {
         display: flex;
         align-items: center;
@@ -135,6 +139,7 @@
         border-color: rgb(255 243 238 / 50%) !important;
         backdrop-filter: blur(10px);
         z-index: 9999;
+        
       }
       .url-input {
         border-radius: 100px !important;
@@ -1060,14 +1065,14 @@
         <div class="main-form">
           <div class="mb-3 text-center">
             <label for="exampleFormControlInput1" class="form-label mb-2"
-              >Enter your longurl</label
+              >Enter Your URL</label
             >
             <div class="d-flex align-items-center">
               <input
                 type="text"
                 class="form-control url-input"
                 id="exampleFormControlInput1"
-                placeholder="" [(ngModel)]="url.longurl" (keydown.enter)="createShorturl()"
+                placeholder="Enter your link for shorten " [(ngModel)]="url.longurl" (keydown.enter)="createShorturl()"
               />
               <button type="button" class="btn btn-secondary refresh-btn ms-4" (click)="reloadpage()">
                 <svg
@@ -1092,13 +1097,13 @@
               </button>
             </div>
             <div class="text-center mt-4">
-              <button type="button" class="btn btn-primary" (click)="createShorturl()">Submit</button>
+              <button type="button" class="btn btn-primary" (click)="createShorturl()">Convert Here</button>
             </div>
           </div>
           <div class="mb-3 mt-5"  *ngIf="shorturl">
             <div class="d-flex align-items-center justify-content-center">
               <label for="exampleFormControlInput1" class="form-label mb-0"
-                >Converted url</label
+                >Converted url :- </label
               >
               <div class="d-flex align-items-center d-block ms-4">
                 <!-- <span class="custom-tooltip" data-bs-customClass="custom-tooltip" data-bs-toggle="tooltip" data-bs-html="true" title="The tooltip text<br/>Extra text">
@@ -1106,7 +1111,7 @@
                 </span> -->
                 <p
                   class="mb-0 "
-                  type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="https://plutustec.com/" (click)="copyshorturl(response)"
+                  type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="click to copy" (click)="copyshorturl(response)"
                 >
                   {{ response.shorturl }}
                 </p>
