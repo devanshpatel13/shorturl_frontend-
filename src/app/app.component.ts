@@ -10,3 +10,6 @@ import { ApiService } from './api.service';
 export class AppComponent {
   title = 'shorturl_frontend';
 }
+
+
+//python quick sort algorithm

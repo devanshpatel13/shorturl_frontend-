@@ -14,6 +14,7 @@ export class CreateshorturlComponent  implements OnInit{
   url : any;
   response :any;
   shorturl:boolean = false
+  copyTitle:boolean = false
 
   constructor(private api:ApiService, private clipboard: Clipboard){
     this.url = {id : -1, longurl : '', shorturl : '' };
@@ -37,7 +38,7 @@ export class CreateshorturlComponent  implements OnInit{
   copyshorturl = (response :any)=>{
     
     this.clipboard.copy(response.shorturl)
-    
+    this.copyTitle = true
   };
   reloadpage = () => {
     window.location.reload();

@@ -76,7 +76,7 @@
           rgba(247, 132, 90, 1) 100%
         );
         position: relative;
-        height: calc(100vh - 131px);
+        height: calc(100vh - 175px);
         overflow: hidden;
       }
       .bg-image-main {
@@ -156,6 +156,21 @@
         align-items: center;
         justify-content: center;
       }
+      .copy-btn {
+        height: 54px;
+        width: 54px;
+        border-radius: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(255 243 238 / 50%) !important;
+        border-color: rgb(255 243 238 / 50%) !important;
+        backdrop-filter: blur(10px);
+        z-index: 9999;
+      }
+      .copy-btn svg{
+        height: 28px;
+      }
       .main-form {
         z-index: 9999 !important;
       }
@@ -183,6 +198,50 @@
 
     .tooltip.bs-tooltip-end .tooltip-arrow::before {
       border-right-color: rgb(255 243 238 / 50%);
+    }
+    .footer{
+      padding: 10px;
+    text-align: center;
+    color: #FF6C37;
+    }
+    .custom-tooltop-white{
+      position: relative;
+      text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-in-out;
+    }
+    .custom-tooltop-white-content{
+      display: none;
+        position: absolute;
+        top: -40px;
+        white-space: nowrap;
+        background-color: rgb(255 243 238 / 50%);
+        padding: 5px;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 200;
+        line-height: normal;
+        left: -18px;
+        transition: all 0.5s ease-in-out;
+    }
+    .custom-tooltop-white-content::before{
+      content: "";
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid rgb(255 243 238 / 50%);
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    transform: translate(-6px, 0px);
+    }
+    .custom-tooltop-white:hover .custom-tooltop-white-content{
+      display: block !important;
+      transition: all 0.5s ease-in-out;
     }
     </style>
   </head>
@@ -1073,7 +1132,7 @@
                 id="exampleFormControlInput1"
                 placeholder="Enter your link for shorten " [(ngModel)]="url.longurl" (keydown.enter)="createShorturl()"
               />
-              <button type="button" class="btn btn-secondary refresh-btn ms-4" (click)="reloadpage()">
+              <button type="button" class="btn btn-secondary copy-btn ms-4"  (click)="reloadpage()">
                 <svg
                   id="Layer_1"
                   data-name="Layer 1"
@@ -1114,15 +1173,26 @@
                 >
                   {{ response.shorturl }}
                 </p>
+                <div class="custom-tooltop-white ms-3">
+                  <span class="mb-0 copy-btn" type="button" (click)="copyshorturl(response)">
+                    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M340.91,506H93a5,5,0,0,0-1.26-.69c-34.22-7.37-54.38-32.27-54.38-67.2q0-151.25,0-302.47c0-2.6,0-5.21.11-7.81C38.91,97.57,64,71.58,94.12,69.51c7-.49,14.13-.07,21.11-.07,1.46-35.87,32.56-64,67.55-63.43,59.34,1,118.72.25,178.09.42a10.31,10.31,0,0,1,7,3Q420.16,69,472.1,128.86a11.55,11.55,0,0,1,2.43,6.91c.22,15,.11,29.92.11,44.88q0,99.29,0,198.56c0,31.21-23.27,58.63-54.06,63.42-7.78,1.2-15.79.92-23.84,1.33-1.29,21.22-11,37.73-27.79,50.3C360.57,500.53,350.88,503.59,340.91,506ZM334.08,37.53H182.28C160.17,37.53,146.66,51,146.66,73V376.91c0,21.77,13.54,35.39,35.17,35.39H408.24c21.43,0,35.16-13.63,35.16-34.91q0-104.65,0-209.3v-5.64c-8,0-15.41.06-22.85,0-10.24-.08-20.63.8-30.69-.59-33-4.55-55.77-31.39-55.79-64.67C334.07,77.52,334.08,57.86,334.08,37.53Zm31.06,406h-6q-89,0-178.09,0A64.28,64.28,0,0,1,170.8,443c-32.68-5.32-55.37-32.15-55.37-65.35q0-135.62,0-271.24V99.56c-8.47.69-16.42.41-23.91,2.13-14.36,3.31-22.93,16-22.93,32.24q0,153,0,305.89c0,21.3,13.71,34.94,35.12,34.95H279.83c17.73,0,35.46.14,53.19,0C350.26,474.55,364,461.37,365.14,443.54ZM365.31,38c0,15.17.14,28.8,0,42.42-.19,15,5,28,13.73,39.75,5.53,7.42,12.55,11.65,22.45,11.18,12.49-.6,25-.14,37.54-.16,1.16,0,2.33-.25,4-.44Z" style="fill:#fff"/><path d="M294.87,334.32q-34.87,0-69.75,0c-6.85,0-11.9-3.2-14.65-9.42-2.6-5.89-1.53-11.5,2.63-16.37,3.4-4,8-5.39,13.09-5.39h24.38q55.6,0,111.2.05a29.55,29.55,0,0,1,9.11,1.19c6.81,2.26,10.95,9.63,9.88,16.66a15.45,15.45,0,0,1-15.66,13.25C341.69,334.39,318.28,334.32,294.87,334.32Z" style="fill:#fff"/><path d="M294.82,256.28c-23.41,0-46.82.08-70.23,0a15.35,15.35,0,0,1-15.2-12.61,15.15,15.15,0,0,1,8.83-16.78,25.54,25.54,0,0,1,9-1.66c9.1-.21,18.21-.07,27.31-.07q53.66,0,107.3,0a29.2,29.2,0,0,1,9.1,1.22c6.78,2.28,10.93,9.69,9.84,16.7a15.32,15.32,0,0,1-14.25,13.09c-6,.28-12,.13-18,.14H294.82Z" style="fill:#fff"/></svg>
+                  </span>
+                  <div class="custom-tooltop-white-content" *ngIf='!copyTitle'>
+                    click to copy
+                  </div>
+                  <div class="custom-tooltop-white-content mx-3" *ngIf="copyTitle">
+                    copied !
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="text-center mt-4">
-              <button type="button" class="btn btn-primary" (click)="copyshorturl(response)">Copy url</button>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <div class="footer">
+      @ 2022 Plutus Technologies Pvt.Lts.
+    </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
